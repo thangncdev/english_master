@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import { useState } from 'react';
-import { View, Button } from 'react-native';
+import { Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/ThemedText';
 import { useVocabulary } from '@/contexts/VocabularyContext';
 
@@ -11,10 +12,10 @@ export default function QuizMeaningScreen() {
 
   if (words.length === 0) {
     return (
-      <View style={{ flex: 1, padding: 16 }}>
+      <SafeAreaView style={{ flex: 1, padding: 16 }}>
         <Stack.Screen options={{ title: 'Word -> Meaning' }} />
         <ThemedText>No words to practice.</ThemedText>
-      </View>
+      </SafeAreaView>
     );
   }
 
@@ -31,14 +32,14 @@ export default function QuizMeaningScreen() {
   };
 
   return (
-    <View style={{ flex: 1, padding: 16, gap: 12 }}>
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 12 }}>
       <Stack.Screen options={{ title: 'Word -> Meaning' }} />
       <ThemedText type="title">{word.word}</ThemedText>
       {options.map((m) => (
         <Button key={m} title={m} onPress={() => handleAnswer(m)} />
       ))}
       {show && <Button title="Next" onPress={next} />}
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -1,6 +1,7 @@
 import { Stack } from 'expo-router';
 import { useState, useEffect } from 'react';
 import { View, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/ThemedText';
 import { useVocabulary } from '@/contexts/VocabularyContext';
 
@@ -12,10 +13,10 @@ export default function QuizScrambleScreen() {
 
   if (words.length === 0) {
     return (
-      <View style={{ flex: 1, padding: 16 }}>
+      <SafeAreaView style={{ flex: 1, padding: 16 }}>
         <Stack.Screen options={{ title: 'Unscramble' }} />
         <ThemedText>No words to practice.</ThemedText>
-      </View>
+      </SafeAreaView>
     );
   }
 
@@ -40,7 +41,7 @@ export default function QuizScrambleScreen() {
   const solved = letters.length === 0 && answer.toLowerCase() === word.word.toLowerCase();
 
   return (
-    <View style={{ flex: 1, padding: 16, gap: 12 }}>
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 12 }}>
       <Stack.Screen options={{ title: 'Unscramble' }} />
       <ThemedText>{word.meaning}</ThemedText>
       <ThemedText type="title">{answer}</ThemedText>
@@ -50,7 +51,7 @@ export default function QuizScrambleScreen() {
         ))}
       </View>
       {solved && <Button title="Next" onPress={next} />}
-    </View>
+    </SafeAreaView>
   );
 }
 

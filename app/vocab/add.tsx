@@ -1,6 +1,7 @@
 import { Stack, router } from 'expo-router';
 import { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { TextInput, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useVocabulary } from '@/contexts/VocabularyContext';
 import { ThemedText } from '@/components/ThemedText';
@@ -17,7 +18,7 @@ export default function AddWordScreen() {
   };
 
   return (
-    <View style={{ flex: 1, padding: 16, gap: 12 }}>
+    <SafeAreaView style={{ flex: 1, padding: 16, gap: 12 }}>
       <Stack.Screen options={{ title: 'Add Word' }} />
       <ThemedText>Word</ThemedText>
       <TextInput
@@ -32,6 +33,6 @@ export default function AddWordScreen() {
         style={{ borderWidth: 1, padding: 8, borderRadius: 4 }}
       />
       <Button title="Save" onPress={handleAdd} />
-    </View>
+    </SafeAreaView>
   );
 }

@@ -1,5 +1,6 @@
 import { Link } from 'expo-router';
 import { View, FlatList, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/ThemedText';
 import { useVocabulary } from '@/contexts/VocabularyContext';
 
@@ -7,7 +8,7 @@ export default function VocabularyScreen() {
   const { words } = useVocabulary();
 
   return (
-    <View style={{ flex: 1, padding: 16 }}>
+    <SafeAreaView style={{ flex: 1, padding: 16 }}>
       <View style={{ flexDirection: 'row', gap: 12, marginBottom: 12 }}>
         <Link href="/vocab/add" asChild>
           <Button title="Add Word" />
@@ -26,6 +27,6 @@ export default function VocabularyScreen() {
         )}
         ListEmptyComponent={<ThemedText>No words yet.</ThemedText>}
       />
-    </View>
+    </SafeAreaView>
   );
 }
